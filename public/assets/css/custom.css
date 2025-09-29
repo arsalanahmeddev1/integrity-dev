@@ -19,3 +19,7 @@
 .dark-only .sidebar-list .sidebar-link .theme-icons {
     color: var(--theme-default);
 }
+
+.page-wrapper .page-header .header-wrapper .nav-right .profile-dropdown {
+    top: 30px;
+}

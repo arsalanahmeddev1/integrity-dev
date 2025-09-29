@@ -26,13 +26,13 @@
             </div>
         </div>
         <div class="col-xxl-5 col-xl-6 col-md-5 col-4">
-            <h3>
+            {{-- <h3>
                 @php
                     $user = Auth::user();
                     $roleName = $user ? $user->getRoleNames()->first() : null;
                 @endphp
                 {{ $roleName ? \Illuminate\Support\Str::title(str_replace('_', ' ', $roleName)) : 'Dashboard' }}
-            </h3>
+            </h3> --}}
         </div>
         <div class="nav-right col-xxl-7 col-xl-6 col-md-7 col-8 pull-right right-header p-0 ms-auto">
             <ul class=
@@ -92,11 +92,15 @@
                 <li class="profile-nav onhover-dropdown pe-0 py-0">
                     <div class="d-flex profile-media">
                         <img class="b-r-10" src="../assets/images/dashboard/profile.png" alt="" />
-                        <div class="flex-grow-1">
-                            <span>Emay Walter</span>
-                            <p class="mb-0">
-                                Admin <i class="middle fa-solid fa-angle-down"></i>
-                            </p>
+                        <div class="flex-grow-1 d-flex align-items-center justify-content-between gap-1">
+                            <span>
+                                @php
+                                    $user = Auth::user();
+                                    $roleName = $user ? $user->getRoleNames()->first() : null;
+                                @endphp
+                                {{ $roleName ? \Illuminate\Support\Str::title(str_replace('_', ' ', $roleName)) : 'Dashboard' }}
+                            </span>
+                            <i class="middle fa-solid fa-angle-down"></i>
                         </div>
                     </div>
                     <ul class="profile-dropdown onhover-show-div">
@@ -104,12 +108,14 @@
                             <a href="{{ route('home') }}"><i data-feather="globe"></i><span>Website </span></a>
                         </li>
                         <li>
-                            <a href="{{ route('profile.edit') }}"><i data-feather="user"></i><span>Edit Profile </span></a>
+                            <a href="{{ route('profile.edit') }}"><i data-feather="user"></i><span>Edit Profile
+                                </span></a>
                         </li>
                         <li>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="dropdown-item"><i data-feather="log-in"> </i><span>Log out</span></button>
+                                <button type="submit" class="dropdown-item"><i data-feather="log-in"> </i><span>Log
+                                        out</span></button>
                             </form>
                         </li>
                     </ul>

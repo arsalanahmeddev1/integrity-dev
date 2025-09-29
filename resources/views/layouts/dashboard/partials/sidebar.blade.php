@@ -34,35 +34,26 @@
                         <span>Back</span><i class="fa-solid fa-angle-right ps-2" aria-hidden="true"></i>
                     </div>
                 </li>
-                {{-- <li class="pin-title sidebar-main-title">
+                <li class="pin-title sidebar-main-title">
                     <div>
                         <h6>Pinned</h6>
                     </div>
-                </li> --}}
-                {{-- <li class="sidebar-main-title">
-                    <div>
-                        <h6 class="lan-1">General</h6>
-                    </div>
-                </li> --}}
+                </li>
                 @foreach (dynamic_sidebar($userRoleId) as $module)
                     <li class="sidebar-list">
                         <i class="fa-solid fa-thumbtack"></i>
-                        {{-- <a href="{{ Route::has($module->route_name) ? route($module->route_name) : '#' }}" --}}
                         <a class="sidebar-link sidebar-title">
                             <span class="theme-icons"><i class="{{ $module->icon }}"></i></span>
-                            {{-- {{ ($module->route_name) }} --}}
                             <span>{{ $module->name }}</span>
                         </a>
                         @php
                             $children = $module->children->filter(function ($child) use ($userRoleId) {
                                 $permission = $child->permissions->first(); // pre-loaded collection
 
-                                // Super Admin full access
                                 if ($userRoleId == 1) {
                                     return true;
                                 }
 
-                                // Normal role: show only if permission exists and >0
                                 return $permission &&
                                     ($permission->is_add ||
                                         $permission->is_view ||
@@ -75,7 +66,6 @@
                             <ul class="sidebar-submenu">
                                 @foreach ($children as $child)
                                     <li>
-                                        {{-- <a href="{{ $child->route_name ? route($child->route_name) : '#' }}"> --}}
                                         <a href="">
                                             {{ $child->name }}
                                         </a>

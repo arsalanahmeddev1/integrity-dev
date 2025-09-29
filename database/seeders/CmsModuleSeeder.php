@@ -14,7 +14,6 @@ class CmsModuleSeeder extends Seeder
     {
         CmsModule::insert([
             [
-                'id' => 1,
                 'name' => 'Dashboard',
                 'route_name' => 'dashboard',
                 'icon' => 'fa-regular fa-house',
@@ -24,7 +23,6 @@ class CmsModuleSeeder extends Seeder
                 
             ],
             [
-                'id' => 2,
                 'name' => 'Projects',
                 'route_name' => 'projects.index',
                 'icon' => 'fa-solid fa-diagram-project',
@@ -34,7 +32,6 @@ class CmsModuleSeeder extends Seeder
 
             ],
             [
-                'id' => 3,
                 'name' => 'Companies',
                 'route_name' => 'companies.index',
                 'icon' => 'pompanies',
@@ -43,7 +40,6 @@ class CmsModuleSeeder extends Seeder
                 'parent_id' => 0,
             ],
             [
-                'id' => 4,
                 'name' => 'Billing',
                 'route_name' => 'billing.index',
                 'icon' => 'billing',
@@ -52,7 +48,6 @@ class CmsModuleSeeder extends Seeder
                 'parent_id' => 0,
             ],
             [
-                'id' => 5,
                 'name' => 'Company Profile',
                 'route_name' => 'company-profile.index',
                 'icon' => 'company-profile',
@@ -60,10 +55,17 @@ class CmsModuleSeeder extends Seeder
                 'status' => 'active',
                 'parent_id' => 0,
             ],
+            [
+                'name' => 'Users',
+                'route_name' => 'users.index',
+                'icon' => 'fa-solid fa-users',
+                'sort_order' => 6,
+                'status' => 'active',
+                'parent_id' => 0,
+            ],
 
             // submenu projects
             [
-                'id' => 6,
                 'name' => 'Add Projects',
                 'route_name' => 'projects.create',
                 'icon' => 'fa-solid fa-circle-plus',
@@ -72,13 +74,29 @@ class CmsModuleSeeder extends Seeder
                 'parent_id' => 2, // Parent is Projects
             ],
             [
-                'id' => 7,
                 'name' => 'Update Projects',
                 'route_name' => 'projects.edit',
                 'icon' => 'fa-solid fa-pen-to-square',
                 'sort_order' => 2,
                 'status' => 'active',
                 'parent_id' => 2, // Parent is Projects
+            ],
+            //
+            [
+                'name' => 'Add Users',
+                'route_name' => 'users.create',
+                'icon' => 'fa-solid fa-circle-plus',
+                'sort_order' => 1,
+                'status' => 'active',
+                'parent_id' => 6, // Parent is Users
+            ],
+            [
+                'name' => 'Update Users',
+                'route_name' => 'users.edit',
+                'icon' => 'fa-solid fa-pen-to-square',
+                'sort_order' => 2,
+                'status' => 'active',
+                'parent_id' => 6, // Parent is Users
             ],
         ]);
     }
