@@ -1,47 +1,128 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+{{-- @props(['messages'])
+@if ($messages)
+    <ul {{ $attributes->merge(['class' => 'text-sm text-red-600 dark:text-red-400 space-y-1']) }}>
+        @foreach ((array) $messages as $message)
+            <li>{{ $message }}</li>
+        @endforeach
+    </ul>
+@endif --}}
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@extends('layouts.web.master')
+{{-- @section('title', $page_title) --}}
+@section('content')
+    <!-- BANNER SEC -->
+    <section class="inner-banner auth-banner"
+        style="background-image: url('{{ asset('/assets/web/images/hero-bg-02.png') }}');">
+        <div class="banner-wrapper position-relative z-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-xl-12 text-center" data-aos="fade-up" data-aos-easing="linear"
+                        data-aos-duration="1500">
+                        <h1 class="title-theme-gradient banner-title text-uppercase">Login Now</h1>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+    <section class="auth-section pt-b-80 pt-150 pb-150">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-6 login-content">
+                    <div>
+                        <h4 class="text-uppercase title title-login mb-20" data-aos="fade-down" data-aos-easing="linear"
+                            data-aos-duration="1500"><span>WELCOME</span> TO</h4>
+                        <h1 class="text-uppercase title-login mb-20" data-aos="fade-down" data-aos-easing="linear"
+                            data-aos-duration="1500">Integrity Development
+                        </h1>
+                        <p class="hd-20 fw-medium login-subtext text-capitalize" data-aos="fade-up" data-aos-easing="linear"
+                            data-aos-duration="1500">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna alion.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 form-bg card-body" data-aos="flip-left" data-aos-easing="linear"
+                    data-aos-duration="1500">
+                    <div class="auth-card">
+                        <h1 class="login-head text-uppercase hd-42 heading mb-20"><span>LOGIN NOW</span></h1>
+                        @if (Session::has('error'))
+                            <p class="alert alert-danger" id="error-alert">{{ Session::get('error') }}</p>
+                        @endif
+                        @if (Session::has('message'))
+                            <p class="alert alert-success" id="success-alert">{{ Session::get('message') }}</p>
+                        @endif
+                        {{-- <form method="POST" action="{{ route('user.authenticate') }}">
+                            @csrf
+                            <div class="form-group field-wrap">
+                                <input class="input-field" name="email" value="{{ old('email') }}" type="email"
+                                    placeholder="Email Address" style="border: 1px solid #fcfcfc;">
+                                <span style="color: red">{{ $errors->first('email') }}</span>
+                            </div>
+                            <div class="form-group field-wrap">
+                                <input class="input-field" type="password" placeholder="Password" name="password" required
+                                    autocomplete="current-password" style="border: 1px solid #fcfcfc;">
+                                <span style="color: red">{{ $errors->first('password') }}</span>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit"
+                                    class="btn-dark-pill mx-auto d-flex justify-content-center text-capitalize w-100 mb-20"
+                                    name="form1">Login</button>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="remember" id="flexCheckDefault">
+                                <label class="login-head fs-18" for="flexCheckDefault">
+                                    Keep me logged in
+                                </label>
+                            </div>
+                        </form> --}}
+                        {{-- <div class="form-under-btn">
+                            <div class="forgot"><a href="{{ route('forgot-password') }}">Forgot Password?</a></div>
+                            <p>Don't have an account? <a href="{{ route('registration') }}">Register</a> </p>
+                        </div> --}}
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="form-group field-wrap">
+                                <input name="email" class="input-field" type="email" placeholder="Email Email" required>
+                            </div>
+                            <div class="form-group field-wrap">
+                                <input name="password" class="input-field" type="password" placeholder="Enter Password"
+                                    required>
+                                <span>
+                                    @error('password') {{$message}} @enderror
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit"
+                                    class="btn-dark-pill mx-auto d-flex justify-content-center text-capitalize w-100 mb-20">Log
+                                    in</button>
+                            </div>
+                            <div class="form-check">
+                                <input id="remember_me" name="remember" class="form-check-input" type="checkbox"
+                                    name="remember">
+                                <label for="remember_me" class="login-head mb-10 fs-18">
+                                    Keep me logged in
+                                </label>
+                            </div>
+                            <div class="form-under-btn">
+                                <div class="forgot"><a href="{{ route('password.request') }}">Forgot Password?</a></div>
+                                <p>Don't have an account? <a href="{{ route('registration') }}">Register</a> </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </section>
+    </main>
+    <!-- BANNER SEC -->
+@endsection
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var errorAlert = document.getElementById('error-alert');
+        if (errorAlert) {
+            setTimeout(function() {
+                errorAlert.style.display = 'none';
+            }, 10000); // 10 seconds
+        }
+    });
+</script>

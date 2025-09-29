@@ -20,7 +20,7 @@ Route::get('/key-features', fn() => view('screens.web.key-features.index'))->nam
 Route::get('/testimonials', fn() => view('screens.web.testimonials.index'))->name('testimonials');
 Route::get('/contact-us', fn() => view('screens.web.contact-us.index'))->name('contact-us');
 Route::get('/packages', fn() => view('screens.web.packages.index'))->name('packages');
-
+Route::get('/registration', fn() => view('screens.web.registration.index'))->name('registration');
 // user routes 
 
 

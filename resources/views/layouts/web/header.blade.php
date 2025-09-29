@@ -39,7 +39,7 @@
                                     </li>
                                     @if (!Auth::check())
                                     <li class="nav-item">
-                                        <a class="navs {{ request()->is('register') ? 'active' : '' }}" href="{{ route('register') }}">Sign Up</a>
+                                        <a class="navs {{ request()->is('register') ? 'active' : '' }}" href="{{ route('registration') }}">Sign Up</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="navs {{ request()->is('login') ? 'active' : '' }}" href="{{ route('login') }}">Login</a>

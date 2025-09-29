@@ -8,7 +8,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="index.html">
+                        <a href="#">
                             <svg class="stroke-icon">
                                 <use href="{{ asset('/assets/libs/svg/icon-sprite.svg#stroke-home') }}"></use>
                             </svg></a>
