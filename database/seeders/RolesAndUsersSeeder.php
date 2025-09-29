@@ -22,7 +22,7 @@ class RolesAndUsersSeeder extends Seeder
 
         // 2. Super Admin User
         $superAdmin = User::firstOrCreate(
-            ['email' => 'superadmin@gmail.com'],
+            ['email' => 'admin@gmail.com'],
             [
                 'name' => 'Super Admin',
                 'password' => Hash::make('Admin@123'), // change in prod
@@ -32,16 +32,9 @@ class RolesAndUsersSeeder extends Seeder
 
         // 3. Company Admin User
         $companyAdmin = User::firstOrCreate(
-            ['email' => 'legacyelectricalcompany@gmail.com'],
+            ['email' => 'companyadmin@gmail.com'],
             [
                 'name' => 'Company Admin',
-                'password' => Hash::make('12345678'),
-            ]
-        );
-        $companyAdmin = User::firstOrCreate(
-            ['email' => 'companytesting@gmail.com'],
-            [
-                'name' => 'companytestin',
                 'password' => Hash::make('12345678'),
             ]
         );
@@ -52,13 +45,6 @@ class RolesAndUsersSeeder extends Seeder
             ['email' => 'pm@gmail.com'],
             [
                 'name' => 'John doe',
-                'password' => Hash::make('12345678'),
-            ]
-        );
-        $projectManager = User::firstOrCreate(
-            ['email' => 'pmtesting2@gmail.com'],
-            [
-                'name' => 'pm example',
                 'password' => Hash::make('12345678'),
             ]
         );
