@@ -1,0 +1,21 @@
+:root {
+    --theme-default: #c5c5c5;
+    /* --theme-secondary: #27293d; */
+    /* --light-text: #c5c5c5; */
+    /* --dark-bg: #0d0d0d; */
+  }
+
+
+.doted-list {
+    margin-bottom: 20px;
+}
+.doted-list li {
+    list-style: disc;
+}
+.toggle-sidebar {
+    top: 45px;
+}
+
+.dark-only .sidebar-list .sidebar-link .theme-icons {
+    color: var(--theme-default);
+}
