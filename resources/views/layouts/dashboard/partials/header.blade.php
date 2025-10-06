@@ -95,10 +95,10 @@
                         <div class="flex-grow-1 d-flex align-items-center justify-content-between gap-1">
                             <span>
                                 @php
-                                    $user = Auth::user();
+                                    $user = checkUser();
                                     $roleName = $user ? $user->getRoleNames()->first() : null;
                                 @endphp
-                                {{ $roleName ? \Illuminate\Support\Str::title(str_replace('_', ' ', $roleName)) : 'Dashboard' }}
+                                {{ $roleName ? \Illuminate\Support\Str::title(str_replace('_', ' ', $roleName)) : 'Not Set' }}
                             </span>
                             <i class="middle fa-solid fa-angle-down"></i>
                         </div>

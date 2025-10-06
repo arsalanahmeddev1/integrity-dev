@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuperAdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\UsersController;
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -31,6 +33,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/companies', fn() => view('screens.admin.companies.index'))->name('companies.index');
     Route::get('/billing', fn() => view('screens.admin.billing.index'))->name('billing.index');
     Route::get('/projects', fn() => view('screens.admin.projects.index'))->name('projects.index');
+    // Route::get('/users', fn() => view('screens.admin.users.index'))->name('users.index');
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', [UsersController::class, 'index'])->name('users.index');
+        Route::get('/create', [UsersController::class, 'create'])->name('users.create');
+        Route::get('/get-data', [UsersController::class, 'getData'])->name('users.data');
+        Route::get('/edit', [UsersController::class, 'edit'])->name('users.edit');
+    });
 });
 
 // company admin routes

@@ -1,8 +1,7 @@
 :root {
-    --theme-default: #c5c5c5;
+    --theme-default: #1b1b1b;
     --tw-ring-color: #000;
 }
-
 
 .doted-list {
     margin-bottom: 20px;
@@ -30,9 +29,7 @@
     --c: linear-gradient(#fff 0 0);
     --r1: radial-gradient(farthest-side at bottom, #fff 93%, #fff);
     --r2: radial-gradient(farthest-side at top, #fff 93%, #fff);
-    background:
-        var(--c), var(--r1), var(--r2),
-        var(--c), var(--r1), var(--r2),
+    background: var(--c), var(--r1), var(--r2), var(--c), var(--r1), var(--r2),
         var(--c), var(--r1), var(--r2);
     background-repeat: no-repeat;
     animation: l1 1s infinite alternate;
@@ -46,21 +43,66 @@
 }
 
 @keyframes l1 {
-
     0%,
     10% {
         background-size: 8px 0, 8px 4px, 8px 4px;
-        background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+        background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px),
+            50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%,
+            100% calc(50% - 2px), 100% calc(50% + 2px);
     }
 
     90%,
     100% {
         background-size: 8px 100%, 8px 4px, 8px 4px;
-        background-position: 0 50%, 0 -2px, 0 calc(100% + 2px), 50% 50%, 50% -2px, 50% calc(100% + 2px), 100% 50%, 100% -2px, 100% calc(100% + 2px);
+        background-position: 0 50%, 0 -2px, 0 calc(100% + 2px), 50% 50%,
+            50% -2px, 50% calc(100% + 2px), 100% 50%, 100% -2px,
+            100% calc(100% + 2px);
     }
 }
 .loader-wrapper {
     width: 100%;
     height: 100%;
     background-color: #000;
+}
+.action-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    color: hsla(0, 0%, 100%, 0.6);
+}
+.table.dataTable td:last-child {
+    display: flex;
+}
+
+.page-wrapper.compact-wrapper
+    .page-body-wrapper
+    div.sidebar-wrapper
+    .sidebar-main
+    .sidebar-links
+    .simplebar-wrapper
+    .simplebar-mask
+    .simplebar-content-wrapper
+    .simplebar-content
+    > li:hover
+    .sidebar-link:not(.active):hover
+    .according-menu
+    i,
+.page-wrapper.compact-wrapper
+    .page-body-wrapper
+    div.sidebar-wrapper
+    .sidebar-main
+    .sidebar-links
+    .simplebar-wrapper
+    .simplebar-mask
+    .simplebar-content-wrapper
+    .simplebar-content
+    > li:hover
+    .sidebar-link:not(.active):hover
+    span,
+a:hover {
+    color: #fff;
 }
